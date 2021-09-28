@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import SideNavBar from './components/SideNavBar';
+
+// import all view components
+import HomeView from './views/HomeView';
+import ErrorView from './views/ErrorView';
+import ManageTopicsView from './views/ManageTopicsView';
+import CreateMeetingView from './views/CreateMeetingView';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <BrowserRouter>
+      <div className="row">
+        <div className="col-2">
+          <SideNavBar/>
+        </div>
+        <div className="col-10">
+          <Switch>
+            <Route exact path="/" component={HomeView} />
+            <Route exact path="/manageTopics" component={ManageTopicsView} />
+            <Route exact path="/createMeeting" component={CreateMeetingView} />
+            <Route exact path="**" component={ErrorView} />
+          </Switch>
+        </div>
+      </div>
+    </BrowserRouter>
+  )
 }
 
 export default App;

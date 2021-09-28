@@ -3,10 +3,20 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap-icons/font/bootstrap-icons.css'
+import './styles/styles.scss';
+
+import MeetingProvider from './context/MeetingContext';
+import TopicProvider from './context/TopicContext';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <TopicProvider>
+      <MeetingProvider>
+        <App />
+      </MeetingProvider>
+    </TopicProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
