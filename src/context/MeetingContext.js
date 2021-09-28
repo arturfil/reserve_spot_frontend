@@ -4,8 +4,8 @@ import axios from 'axios';
 export const MeetingContext = createContext({});
 
 const MeetingProvider = ({children}) => {
-  const [meetings, setMeetings] = useState([]);
   const apiUrl = process.env.REACT_APP_API_URL
+  const [meetings, setMeetings] = useState([]);
 
   useEffect(() => {
     getMeetings();
@@ -25,8 +25,8 @@ const MeetingProvider = ({children}) => {
   return (
     <MeetingContext.Provider
       value={{
-        setMeetings,
         meetings,
+        setMeetings,
         createMeeting,
       }}
     >

@@ -18,34 +18,36 @@ const CreateMeetingView = () => {
       ...meeting,
       [event.target.name]: event.target.value
     })
-    console.log(`
-      topic: ${meeting.topic}
-    `);
   }
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    createMeeting(meeting);
-    setMeetings([...meetings, meeting])
-    setMeeting({
-      topic: '',
-      date: '',
-      startTime: '',
-      attendees: '',
-      duration: ''
-    })
+    const newMeeting = {
+      _id: new Date(),
+      topic: meeting.topic,
+      date: meeting.date,
+      startTime: meeting.startTime,
+      attendees: meeting.attendees,
+      duration: meeting.duration
+    }
+    setMeetings([...meetings, newMeeting])
+    console.log("MEETINGS", meetings)
   }
 
   return (
     <div className="container mt-5">
 
+      {meetings.map(m => (
+        <h4 key={m._id}>{m.topic.name}</h4>
+      ))}
+
       <form className="form">
 
         <h2>Create Meeting</h2>
 
-        <select onChange={handleChange} name="topic" className="form-control">
+        <select defaultValue={'none'} onChange={handleChange} name="topic" className="form-control">
          
-          <option selected disabled>Select Topic</option>
+          <option disabled value={'none'}>Select Topic</option>
           {topics && topics.map(t => (
             <option key={t._id} value={t._id}>{t.name}</option>
           ))}
@@ -57,7 +59,7 @@ const CreateMeetingView = () => {
           value={meeting.date}
           onChange={handleChange} 
           placeholder="date" 
-          type="text" 
+          type="Date" 
           className="form-control" 
         />
 
@@ -66,7 +68,7 @@ const CreateMeetingView = () => {
           value={meeting.startTime}
           onChange={handleChange}
           placeholder="starTime" 
-          type="text" 
+          type="time" 
           className="form-control" 
         />
 
@@ -88,3 +90,4 @@ const CreateMeetingView = () => {
 };
 
 export default CreateMeetingView;
+
