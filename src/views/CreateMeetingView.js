@@ -22,24 +22,18 @@ const CreateMeetingView = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const newMeeting = {
-      _id: new Date(),
-      topic: meeting.topic,
-      date: meeting.date,
-      startTime: meeting.startTime,
-      attendees: meeting.attendees,
-      duration: meeting.duration
-    }
-    setMeetings([...meetings, newMeeting])
-    console.log("MEETINGS", meetings)
+    createMeeting(meeting);
+    setMeeting({
+      topic: '',
+      date: '',
+      startTime: '',
+      attendees: '',
+      duration: ''
+    })
   }
 
   return (
     <div className="container mt-5">
-
-      {meetings.map(m => (
-        <h4 key={m._id}>{m.topic.name}</h4>
-      ))}
 
       <form className="form">
 

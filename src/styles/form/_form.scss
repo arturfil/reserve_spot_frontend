@@ -10,3 +10,24 @@
     margin: 20px 0;
   }
 }
+
+.editForm {
+  width: 500px;
+  margin: 0 auto;
+
+  label {
+    margin-bottom: 4px;
+  }
+
+  select { 
+    margin-bottom: 20px;
+  }
+
+  input {
+    margin-bottom: 20px;
+  }
+
+  button {
+    margin-bottom: 20px;
+  }
+}

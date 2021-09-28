@@ -1,4 +1,5 @@
 import {useContext} from 'react';
+import MeetingCard from '../components/MeetingCard';
 import { MeetingContext } from '../context/MeetingContext';
 
 const HomeView = () => {
@@ -7,9 +8,14 @@ const HomeView = () => {
   return (
     <div className="container mt-5">
     <h2>Home View</h2>
-      {meetings && meetings.map(m => (
-        <h4 key={m._id}>{m.topic.name}</h4>
-      ))}
+      <div className="row">
+        {meetings && meetings.map((m, i) => (
+          // <h4 key={m._id}>{m.topic.name}</h4>
+          <div key={i} className="col my-4">
+            <MeetingCard meeting={m} />
+          </div>
+        ))}
+      </div>
     </div>
   )
 }

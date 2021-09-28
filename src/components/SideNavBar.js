@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 
 const SideNavBar = () => {
   return (
-    <div>
-      <ul className="sidenav">
+    <div className="sidenav">
+      <ul >
         <li>
           <Link to="/">
             <i className="bi bi-house-door-fill"></i>
