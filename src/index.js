@@ -9,14 +9,17 @@ import "./styles/styles.scss";
 
 import MeetingProvider from "./context/MeetingContext";
 import TopicProvider from "./context/TopicContext";
+import AuthProvider from "./context/AuthContext";
 
 ReactDOM.render(
   <React.StrictMode>
-    <MeetingProvider>
-      <TopicProvider>
-        <App />
-      </TopicProvider>
-    </MeetingProvider>
+    <AuthProvider>
+      <MeetingProvider>
+        <TopicProvider>
+          <App />
+        </TopicProvider>
+      </MeetingProvider>
+    </AuthProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

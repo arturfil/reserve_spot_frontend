@@ -8,6 +8,9 @@ import ManageTopicsView from './views/ManageTopicsView';
 import CreateMeetingView from './views/CreateMeetingView';
 import MeetingDetailsView from './views/MeetingDetailsView';
 import EditMeetingView from './views/EditMeetingView';
+import LoginView from './views/LoginView';
+import SignupView from './views/SignupView';
+import AuthRoute from './components/AuthRoute';
 
 function App() {
   return (
@@ -19,10 +22,12 @@ function App() {
         <div className="col-10">
           <Switch>
             <Route exact path="/" component={HomeView} />
-            <Route exact path="/manageTopics" component={ManageTopicsView} />
+            <AuthRoute exact path="/manageTopics" component={ManageTopicsView} />
             <Route exact path="/meetingDetails/:id" component={MeetingDetailsView} />
-            <Route exact path="/editMeeting/:id" component={EditMeetingView} />
-            <Route exact path="/createMeeting" component={CreateMeetingView} />
+            <AuthRoute exact path="/editMeeting/:id" component={EditMeetingView} />
+            <AuthRoute exact path="/createMeeting" component={CreateMeetingView} />
+            <Route exact path="/login" component={LoginView} />
+            <Route exact path="/signup" component={SignupView} />
             <Route exact path="**" component={ErrorView} />
           </Switch>
         </div>

@@ -1,18 +1,18 @@
 import axios from 'axios';
 import { createContext, useEffect, useState } from 'react';
+import apiHelper from '../apiHelper/apiHelper';
 
 export const TopicContext = createContext({})
 
 const TopicProvider = ({children}) => {
   const [topics, setTopics] = useState  ([]);
-  const apiUrl = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     getAllTopics();
   }, [])
 
   const getAllTopics = async () => {
-    const response = await axios.get(`${apiUrl}/topics`);
+    const response = await apiHelper.get('/topics');
     setTopics(response.data);
   }
 
