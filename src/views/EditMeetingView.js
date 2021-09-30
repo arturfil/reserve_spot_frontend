@@ -6,7 +6,9 @@ import axios from "axios";
 
 const EditMeetingView = ({match}) => {
   const history = useHistory()
-  const { id } = match.params;
+  // const { id } = match.params;
+  const id = 'asdfasdf'
+  console.log("MATCH", match)
   const { meeting, getMeetingById, setMeeting, updateMeeting, deleteMeeting } = useContext(MeetingContext);
   const { topics } = useContext(TopicContext);
 

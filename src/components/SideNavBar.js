@@ -14,23 +14,25 @@ const SideNavBar = () => {
             Home
           </Link>
         </li>
-        <li>
-          <Link to="/createMeeting">
-            <i className="bi bi-plus-circle-fill"></i>
-            Create Meeting
-          </Link>
-        </li>
-        <li>
-          <Link to="/manageTopics">
-            <i className="bi bi-gear-fill"></i>
-            Manage Topics
-          </Link>
-        </li>
         { loggedIn ? (
-          <li style={{cursor: 'pointer'}} onClick={logOutUser}>
-              <i className="bi bi-box-arrow-right"></i>
-              Log Out
-          </li>
+          <>
+            <li>
+              <Link to="/createMeeting">
+                <i className="bi bi-plus-circle-fill"></i>
+                Create Meeting
+              </Link>
+            </li>
+            <li>
+              <Link to="/manageTopics">
+                <i className="bi bi-gear-fill"></i>
+                Manage Topics
+              </Link>
+            </li>
+            <li style={{cursor: 'pointer'}} onClick={logOutUser}>
+                <i className="bi bi-box-arrow-right"></i>
+                Log Out
+            </li>
+          </>
         ) : (
           <li>
             <Link to="/login">

@@ -7,8 +7,8 @@ const AuthRoute = ({ component: Component, ...rest }) => {
   const { loggedIn } = useContext(AuthContext);
 
   return (
-    <Route {...rest} render={() => loggedIn ? (
-          <Component  />
+    <Route {...rest} render={(props) => loggedIn ? (
+          <Component  {...props}/>
         ) : (
           <Route pathname="/login" component={LoginView} />
     )}/>

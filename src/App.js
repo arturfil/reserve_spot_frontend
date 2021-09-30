@@ -16,10 +16,10 @@ function App() {
   return (
     <BrowserRouter>
       <div className="row">
-        <div className="col-2">
+        <div className="col-2 col-sm-2 col-md-2 col-lg-2">
           <SideNavBar/>
         </div>
-        <div className="col-10">
+        <div className="col-10 col-sm-10 col-md-10 col-lg-10">
           <Switch>
             <Route exact path="/" component={HomeView} />
             <AuthRoute exact path="/manageTopics" component={ManageTopicsView} />

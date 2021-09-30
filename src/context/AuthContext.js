@@ -24,7 +24,7 @@ const AuthProvider = ({children}) => {
     const { data } = response;
     console.log(data);
     setUser(data.user);
-    localStorage.setItem('jwtreservespot', JSON.stringify(data.token, data.user));
+    localStorage.setItem('jwtreservespot', JSON.stringify({data}));
     setLoggedIn(true);
   }
 

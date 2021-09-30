@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const MeetingCard = ({meeting: {topic, date, startTime, attendees, duration, _id}}) => {
   return (
-    <Card style={{ width: "18rem" }}>
+    <Card style={{ width: "18rem" }} className="home">
       <Card.Body>
         <Card.Title>{topic.name}</Card.Title>
         <Card.Text>{new Date(date).toLocaleDateString()}</Card.Text>
