@@ -11,6 +11,7 @@ import EditMeetingView from './views/EditMeetingView';
 import LoginView from './views/LoginView';
 import SignupView from './views/SignupView';
 import AuthRoute from './components/AuthRoute';
+import AdminRoute from './components/AdminRoute';
 
 function App() {
   return (
@@ -24,7 +25,7 @@ function App() {
             <Route exact path="/" component={HomeView} />
             <AuthRoute exact path="/manageTopics" component={ManageTopicsView} />
             <Route exact path="/meetingDetails/:id" component={MeetingDetailsView} />
-            <AuthRoute exact path="/editMeeting/:id" component={EditMeetingView} />
+            <AdminRoute exact path="/editMeeting/:id" component={EditMeetingView} />
             <AuthRoute exact path="/createMeeting" component={CreateMeetingView} />
             <Route exact path="/login" component={LoginView} />
             <Route exact path="/signup" component={SignupView} />

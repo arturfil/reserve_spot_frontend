@@ -20,7 +20,7 @@ const ManageTopicsView = () => {
         <tbody>
           {topics &&
             topics.map((topic, i) => (
-              <tr>
+              <tr key={topic._id}>
                 <th>{i + 1}</th>
                 <th>{topic.name}</th>
                 <th>

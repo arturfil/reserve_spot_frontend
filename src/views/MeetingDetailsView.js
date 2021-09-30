@@ -26,7 +26,7 @@ const MeetingDetailsView = ({ match }) => {
           </tr>
           <tr>
             <th>Date: </th>
-            <th>{new Date(meeting.date).toLocaleDateString()}</th>
+            <th>{ meeting.date ? new Date(meeting.date).toISOString().split('T')[0] : ''}</th>
           </tr>
           <tr>
             <th>Duration: </th>

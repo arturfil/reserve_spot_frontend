@@ -2,13 +2,11 @@ import { useContext, useEffect } from "react";
 import { MeetingContext } from "../context/MeetingContext";
 import { TopicContext } from "../context/TopicContext";
 import { useHistory } from 'react-router-dom';
-import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
 
 const EditMeetingView = ({match}) => {
   const history = useHistory()
-  // const { id } = match.params;
-  const id = 'asdfasdf'
-  console.log("MATCH", match)
+  const { id } = match.params;
   const { meeting, getMeetingById, setMeeting, updateMeeting, deleteMeeting } = useContext(MeetingContext);
   const { topics } = useContext(TopicContext);
 
@@ -31,7 +29,8 @@ const EditMeetingView = ({match}) => {
       topic: meeting.topic,
       duration: meeting.duration
     }
-    updateMeeting(id, data)
+    updateMeeting(id, data);
+    toast.success("Updated Succesfully");
   }
 
   const handleDelete = (event) => {
@@ -42,6 +41,7 @@ const EditMeetingView = ({match}) => {
 
   return (
     <div className="container mt-5">
+      <ToastContainer />
       <form className="editForm">
         <h2>Edit Meeting</h2>
 
