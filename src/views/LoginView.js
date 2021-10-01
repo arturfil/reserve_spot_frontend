@@ -1,8 +1,10 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
+import { useHistory } from "react-router-dom";
 
 const LoginView = () => {
+  const history = useHistory();
   const { loginUser } = useContext(AuthContext);
   const [user, setUser] = useState({
     email: '',
@@ -19,6 +21,7 @@ const LoginView = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     loginUser(user)
+    history.push('/')
     setUser({
       email: '',
       password: ''
@@ -34,7 +37,7 @@ const LoginView = () => {
           name="email"
           value={user.email}
           className="form-control" 
-          type="text" 
+          type="email" 
           placeholder="Email" 
         />
         <input
@@ -47,7 +50,7 @@ const LoginView = () => {
         />
         <button 
           onClick={handleSubmit}
-          className="btn btn-outline-primary form-control mb-3"
+          className="btn btn-outline-success form-control mb-3"
         >
           Login
         </button>
@@ -58,3 +61,4 @@ const LoginView = () => {
 };
 
 export default LoginView;
+

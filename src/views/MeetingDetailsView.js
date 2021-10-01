@@ -42,7 +42,7 @@ const MeetingDetailsView = ({ match }) => {
       
       <Link 
         to={`/editMeeting/${id}`}
-        className="btn btn-outline-primary mt-3"
+        className="btn btn-outline-success mt-3"
       >
         Edit Meeting
       </Link>

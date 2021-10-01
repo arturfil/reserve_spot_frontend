@@ -6,11 +6,10 @@ const apiHelper = axios.create({baseURL});
 
 apiHelper.interceptors.request.use(
   async (config) => {
-    let jwt_user;
     let token;
-    // TODO: add user in value for the jwt
     try {
-      token = await JSON.parse(localStorage.getItem('jwtreservespot'));
+      const jwt_data = await JSON.parse(localStorage.getItem('jwtreservespot'));
+      token  = jwt_data.token
     } catch (error) {
       console.log(error);
     }

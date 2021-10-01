@@ -1,4 +1,6 @@
 import { createContext, useEffect, useState } from "react";
+import { Redirect, useHistory } from "react-router";
+import { toast } from "react-toastify";
 import apiHelper from "../apiHelper/apiHelper";
 
 export const AuthContext = createContext({});
@@ -17,10 +19,16 @@ const AuthProvider = ({children}) => {
   })
 
   useEffect(() => {
-    isAdmin();
     checkLogged();
     getAllUsers();
   }, [])
+  
+  // if you don't separate this you won't see the isAdmin being triggered because 
+  // initially on render loggedIn is false and then set to true.
+  useEffect(() =>{ 
+    revalidateToken();
+    isAdmin();
+  }, [loggedIn])
   
   const getAllUsers = async (user) => {
     const response = await apiHelper.get('/auth');
@@ -29,13 +37,17 @@ const AuthProvider = ({children}) => {
 
   const loginUser = async (user) => {
     // const response = await axios.post(`${apiUrl}/auth/login`, user);
-    const response = await apiHelper.post('/auth/login', user);
-    const { data } = response;
-    console.log(data);
-    setUser(data.user);
-    localStorage.setItem('jwtreservespot', JSON.stringify({user: data.user, token: data.token}));
-    setLoggedIn(true);
-    isAdmin();
+    try {
+      const response = await apiHelper.post('/auth/login', user);
+      const { data } = response;
+      setUser(data.user);
+      localStorage.setItem('jwtreservespot', JSON.stringify({user_role: data.user.role, token: data.token}));
+      setLoggedIn(true);
+      isAdmin();
+      toast.success("Succesfully Logged In");
+    } catch (error) {
+      toast.error(`${error}`)
+    }
   }
 
   const checkLogged = () => {
@@ -44,9 +56,22 @@ const AuthProvider = ({children}) => {
   }
 
   const isAdmin = () => {
+    // if the token doesn't exist
+    if (!loggedIn) return;
     const token = JSON.parse(localStorage.getItem('jwtreservespot'));
-    console.log("USER", token);
-    // return token.user.role === 'ADMIN' ? setAdmin(true) : setAdmin(false);
+    const { user_role } = token;
+    return token.user_role === 'ADMIN' ? setAdmin(true) : setAdmin(false);
+  }
+
+  const revalidateToken = async () => {
+    if (!loggedIn) return;
+    try {
+      const response = await apiHelper.post('/auth/renew');
+      const {data} = response;
+      localStorage.setItem('jwtreservespot', JSON.stringify({user_role: data.user.role, token: data.token}))
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   const logOutUser = () => {
@@ -58,6 +83,7 @@ const AuthProvider = ({children}) => {
     <AuthContext.Provider
       value={{
         user,
+        admin,
         users,
         setUser,
         loggedIn,

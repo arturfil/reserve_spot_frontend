@@ -12,7 +12,7 @@ const MeetingCard = ({meeting: {topic, date, startTime, attendees, duration, _id
         <Card.Text>{duration} hours</Card.Text>
         <Link 
           to={`/meetingDetails/${_id}`}
-          className="btn btn-outline-primary"
+          className="btn btn-outline-success"
         >
           See Details
         </Link>

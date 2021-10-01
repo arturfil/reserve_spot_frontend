@@ -3,18 +3,23 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 
 const SideNavBar = () => {
-  const { loggedIn, logOutUser } = useContext(AuthContext);
+  const { loggedIn, logOutUser, user } = useContext(AuthContext);
 
   return (
     <div className="sidenav">
-      <ul >
+      <ul>
+        { loggedIn && (
+          <li>
+            <i className="bi bi-person-circle"></i> Welcome {user.name}
+          </li>
+        )}
         <li>
           <Link to="/">
             <i className="bi bi-house-door-fill"></i>
             Home
           </Link>
         </li>
-        { loggedIn ? (
+        {loggedIn ? (
           <>
             <li>
               <Link to="/createMeeting">
@@ -28,9 +33,9 @@ const SideNavBar = () => {
                 Manage Topics
               </Link>
             </li>
-            <li style={{cursor: 'pointer'}} onClick={logOutUser}>
-                <i className="bi bi-box-arrow-right"></i>
-                Log Out
+            <li style={{ cursor: "pointer" }} onClick={logOutUser}>
+              <i className="bi bi-box-arrow-right"></i>
+              Log Out
             </li>
           </>
         ) : (

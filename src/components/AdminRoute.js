@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Route } from "react-router";
 import { AuthContext } from "../context/AuthContext";
+import ErrorAdminView from "../views/ErrorAdminView";
 import HomeView from "../views/HomeView";
 
 const AdminRoute = ({component: Component, ...rest}) => {
@@ -10,7 +11,7 @@ const AdminRoute = ({component: Component, ...rest}) => {
     <Route {...rest} render={(props) => admin ? (
       <Component {...props} />
     ) : (
-      <Route to="/" component={HomeView} />
+      <Route to="/adminError" component={ErrorAdminView} />
     )}/>
   )
 }
