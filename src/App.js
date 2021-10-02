@@ -34,6 +34,7 @@ function App() {
             <SideNavBar/>
           </div>
               )}
+          {/* This is to make sure the classes are only applied if the user is logged in */}
           <div className={loggedIn ? `col-10 col-sm-10 col-md-10 col-lg-10` : ''}>
             <Switch>
               <NotAuthRoute exact path="/" component={LandingPageView}/>
