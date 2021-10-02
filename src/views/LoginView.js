@@ -21,7 +21,7 @@ const LoginView = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     loginUser(user)
-    history.push('/')
+    history.push('/home')
     setUser({
       email: '',
       password: ''

@@ -1,14 +1,16 @@
 import { useContext, useEffect } from "react";
-import { MeetingContext } from "../context/MeetingContext";
-import { TopicContext } from "../context/TopicContext";
 import { useHistory } from 'react-router-dom';
 import { ToastContainer, toast } from "react-toastify";
+import { MeetingContext } from "../context/MeetingContext";
+import { TopicContext } from "../context/TopicContext";
+import { AuthContext } from "../context/AuthContext";
 
 const EditMeetingView = ({match}) => {
   const history = useHistory()
   const { id } = match.params;
   const { meeting, getMeetingById, setMeeting, updateMeeting, deleteMeeting } = useContext(MeetingContext);
   const { topics } = useContext(TopicContext);
+  const { users } = useContext(AuthContext);
 
   useEffect(() => {
     getMeetingById(id)
@@ -36,7 +38,7 @@ const EditMeetingView = ({match}) => {
   const handleDelete = (event) => {
     event.preventDefault();
     deleteMeeting(id);
-    history.push('/')
+    history.push('/home')
   }
 
   return (
@@ -44,6 +46,14 @@ const EditMeetingView = ({match}) => {
       <ToastContainer />
       <form className="editForm">
         <h2>Edit Meeting</h2>
+
+        <label>Attendees</label>
+        <select name="attendees" className="form-control">
+          <option value="" disabled>Select Attendees</option>
+          { meeting.attendees && meeting.attendees.map(a => (
+            <option key={a.uid} value={a.uid}>{a.name}</option>
+            ))}
+        </select>
 
         <label>Topics</label>
         <select

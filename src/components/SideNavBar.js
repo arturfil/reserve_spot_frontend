@@ -1,9 +1,15 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 
 const SideNavBar = () => {
+  const history = useHistory();
   const { loggedIn, logOutUser, user } = useContext(AuthContext);
+
+  const logOut = () => {
+    logOutUser();
+    history.push('/home')
+  }
 
   return (
     <div className="sidenav">
@@ -14,7 +20,7 @@ const SideNavBar = () => {
           </li>
         )}
         <li>
-          <Link to="/">
+          <Link to="/home">
             <i className="bi bi-house-door-fill"></i>
             Home
           </Link>
@@ -33,7 +39,7 @@ const SideNavBar = () => {
                 Manage Topics
               </Link>
             </li>
-            <li style={{ cursor: "pointer" }} onClick={logOutUser}>
+            <li style={{ cursor: "pointer" }} onClick={logOut}>
               <i className="bi bi-box-arrow-right"></i>
               Log Out
             </li>

@@ -1,3 +1,4 @@
+import { useContext } from 'react';
 import { BrowserRouter, Route, Switch, useHistory } from 'react-router-dom'
 import { toast, ToastContainer } from 'react-toastify';
 import SideNavBar from './components/SideNavBar';
@@ -14,30 +15,37 @@ import SignupView from './views/SignupView';
 import AuthRoute from './components/AuthRoute';
 import AdminRoute from './components/AdminRoute';
 import ErrorAdminView from './views/ErrorAdminView';
+import { AuthContext } from './context/AuthContext';
+import LandingPageView from './views/LandingPageView';
+import NotAuthRoute from './components/NotAuthRoute';
 
 toast.configure();
 
 function App() {
+  const { loggedIn } = useContext(AuthContext);
 
   return (
     <>
       <ToastContainer/>
       <BrowserRouter>
         <div className="row">
-          <div className="col-2 col-sm-2 col-md-2 col-lg-2">
+          { loggedIn && (
+            <div className="col-2 col-sm-2 col-md-2 col-lg-2">
             <SideNavBar/>
           </div>
-          <div className="col-10 col-sm-10 col-md-10 col-lg-10">
+              )}
+          <div className={loggedIn ? `col-10 col-sm-10 col-md-10 col-lg-10` : ''}>
             <Switch>
-              <Route exact path="/" component={HomeView} />
+              <NotAuthRoute exact path="/" component={LandingPageView}/>
+              <NotAuthRoute exact path="/login" component={LoginView} />
+              <NotAuthRoute exact path="/signup" component={SignupView} />
+              <AuthRoute exact path="/home" component={HomeView} />
               <AdminRoute exact path="/manageTopics" component={ManageTopicsView} />
-              <Route exact path="/meetingDetails/:id" component={MeetingDetailsView} />
+              <AuthRoute exact path="/meetingDetails/:id" component={MeetingDetailsView} />
               <AdminRoute exact path="/editMeeting/:id" component={EditMeetingView} />
-              <Route exact path="/adminError" component={ErrorAdminView} />
+              <AuthRoute exact path="/adminError" component={ErrorAdminView} />
               <AuthRoute exact path="/createMeeting" component={CreateMeetingView} />
-              <Route exact path="/login" component={LoginView} />
-              <Route exact path="/signup" component={SignupView} />
-              <Route exact path="**" component={ErrorView} />
+              <Route exact pathname="**" component={ErrorView} />
             </Switch>
           </div>
         </div>
