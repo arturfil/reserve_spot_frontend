@@ -8,7 +8,7 @@ const SideNavBar = () => {
 
   const logOut = () => {
     logOutUser();
-    history.push('/home')
+    history.push('/')
   }
 
   return (

@@ -30,6 +30,9 @@ const LoginView = () => {
 
   return (
     <div className="container mt-5">
+      <Link to="/">
+        <i style={{color: 'black', fontSize: '40px'}} className="bi bi-arrow-left-circle-fill"></i>
+      </Link>
       <form className="form">
         <h2>Login</h2>
         <input 

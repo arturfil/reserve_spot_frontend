@@ -10,7 +10,7 @@ const AuthRoute = ({ component: Component, ...rest }) => {
     <Route {...rest} render={(props) => loggedIn ? (
           <Component  {...props}/>
         ) : (
-          <Route pathname="/login" component={LoginView} />
+          <Route pathname="/" component={LoginView} />
     )}/>
   );
 };
