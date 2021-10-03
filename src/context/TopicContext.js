@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { toast } from 'react-toastify'
 import { createContext, useEffect, useState } from 'react';
 import apiHelper from '../apiHelper/apiHelper';
 
@@ -16,10 +16,24 @@ const TopicProvider = ({children}) => {
     setTopics(response.data);
   }
 
+  const createTopic = async (obj) => {
+    const response = await apiHelper.post('/topics/topic', obj);
+    toast.success('Created Topic')
+    getAllTopics();
+  }
+
+  const deleteTopic = async (id) => {
+    const repsonse = await apiHelper.delete(`/topics/topic/${id}`)
+    // could also just filter from the front end
+    getAllTopics();
+  }
+
   return (
     <TopicContext.Provider
       value={{
-        topics
+        topics,
+        createTopic,
+        deleteTopic
       }}
     >
       {children}

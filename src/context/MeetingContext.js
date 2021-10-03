@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
-import axios from 'axios';
 import apiHelper from "../apiHelper/apiHelper";
+import { toast } from "react-toastify";
 
 export const MeetingContext = createContext({});
 
@@ -31,15 +31,17 @@ const MeetingProvider = ({children}) => {
   }
 
   const createMeeting = async (obj) => {
-    obj.attendees = '6151e1408bd8b70748f8a2f0';
     // const response = await axios.post(`${apiUrl}/meetings/meeting`, obj);
-    const response = await apiHelper.post(`/meetings/meeting`, obj);
-    getMeetings();
+    try {
+      const response = await apiHelper.post(`/meetings/meeting`, obj);
+      toast.success("Meeting created");
+      getMeetings();
+    } catch (error) {
+      toast.error(error)
+    }
   }
 
   const updateMeeting = async (id, obj) => {
-    obj.attendees =  ['6151e1408bd8b70748f8a2f0'];
-    console.log(obj);
     // const response = await axios.put(`${apiUrl}/meetings/meeting/${id}`, obj);
     const response = await apiHelper.put(`/meetings/meeting/${id}`, obj);
     getMeetings();

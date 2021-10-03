@@ -20,6 +20,7 @@ const CreateMeetingView = () => {
       ...meeting,
       [event.target.name]: event.target.value
     })
+    console.log("attendees", meeting.attendees)
   }
 
   const handleSubmit = (event) => {
@@ -29,7 +30,7 @@ const CreateMeetingView = () => {
       topic: '',
       date: '',
       startTime: '',
-      attendee: '',
+      attendees: '',
       duration: ''
     })
   }
@@ -50,10 +51,10 @@ const CreateMeetingView = () => {
         
         </select>
 
-        <select defaultValue={'none'} onChange={handleChange} name="attendee" className="form-control">
-            <option value="none" disabled>Select User</option>
+        <select defaultValue={'none'} onChange={handleChange} name="attendees" className="form-control">
+            <option value={'none'} disabled>Select User</option>
             {users.map(user => (
-              <option key={user.uid} value={user._id}>{user.name}</option>
+              <option key={user.uid} value={user.uid}>{user.name}</option>
             ))}
         </select>
 

@@ -18,6 +18,7 @@ import ErrorAdminView from './views/ErrorAdminView';
 import { AuthContext } from './context/AuthContext';
 import LandingPageView from './views/LandingPageView';
 import NotAuthRoute from './components/NotAuthRoute';
+import CreateTopicView from './views/CreateTopicView';
 
 toast.configure();
 
@@ -41,6 +42,7 @@ function App() {
               <NotAuthRoute exact path="/login" component={LoginView} />
               <NotAuthRoute exact path="/signup" component={SignupView} />
               <AuthRoute exact path="/home" component={HomeView} />
+              <AdminRoute exact path="/createTopic" component={CreateTopicView} />
               <AdminRoute exact path="/manageTopics" component={ManageTopicsView} />
               <AuthRoute exact path="/meetingDetails/:id" component={MeetingDetailsView} />
               <AdminRoute exact path="/editMeeting/:id" component={EditMeetingView} />
