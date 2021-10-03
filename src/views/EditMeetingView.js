@@ -57,13 +57,13 @@ const EditMeetingView = ({match}) => {
 
         <label>Topics</label>
         <select
-          defaultValue={meeting.topic.name}
+          defaultValue={meeting.topic?.name}
           onChange={handleChange}
           name="topic"
           className="form-control"
         >
-          <option disabled value={meeting.topic.name}>
-            Current: {meeting.topic.name}
+          <option disabled value={meeting.topic?.name}>
+            Current: {meeting.topic ? meeting.topic.name : 'DNE'}
           </option>
           {topics &&
             topics.map((t) => (

@@ -12,7 +12,7 @@ const HomeView = () => {
       {meetings.length === 0 ? (
         <h2>No Meetings To Show</h2>
       ) : (
-        <h2>Home View </h2>
+        <h2>This Week Classes</h2>
       )}
       <div className="row">
         {meetings &&

@@ -18,7 +18,7 @@ const MeetingDetailsView = ({ match }) => {
         <thead>
           <tr>
             <th>Topic Name: </th>
-            <th>{meeting.topic.name}</th>
+            <th>{meeting.topic ? meeting.topic.name : "DNE Anymore"}</th>
           </tr>
           <tr>
             <th>Start Time: </th>

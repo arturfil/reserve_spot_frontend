@@ -5,7 +5,7 @@ const MeetingCard = ({meeting: {topic, date, startTime, attendees, duration, _id
   return (
     <Card style={{ width: "18rem" }} className="home">
       <Card.Body>
-        <Card.Title>{topic.name}</Card.Title>
+        <Card.Title>{topic ? topic.name : "Topic DNE Anymore"}</Card.Title>
         <Card.Text>{new Date(date).toISOString().split('T')[0]}</Card.Text>
         <Card.Text>{startTime}</Card.Text>
         <Card.Text>{attendees ? attendees[0].name : 'No attendees'}</Card.Text>
