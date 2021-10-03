@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { useHistory } from "react-router-dom";
+import GoogleButton from "../components/GoogleButton";
 
 const LoginView = () => {
   const history = useHistory();
@@ -57,6 +58,7 @@ const LoginView = () => {
         >
           Login
         </button>
+        <GoogleButton/>
         <Link to="/signup">Don't have an account yet? Signup</Link>
       </form>
     </div>

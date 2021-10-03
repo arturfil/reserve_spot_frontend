@@ -50,6 +50,19 @@ const AuthProvider = ({children}) => {
     }
   }
 
+  const googleLogin = async (obj) => {
+    try {
+      const response = await apiHelper.post('/auth/googleLogin', obj);
+      const {user, token} = response.data;
+      localStorage.setItem('jwtreservespot', JSON.stringify(token));
+      setLoggedIn(true);
+      toast.success('Successfuly Logged In with Google');
+      setUser(user);
+    } catch (error) {
+      
+    }
+  }
+
   const checkLogged = () => {
     const tokenValue = localStorage.getItem('jwtreservespot');
     return tokenValue ? setLoggedIn(true) : setLoggedIn(false); 
@@ -85,9 +98,10 @@ const AuthProvider = ({children}) => {
         user,
         admin,
         users,
-        setUser,
         loggedIn,
+        setUser,
         loginUser,
+        googleLogin,
         logOutUser,
       }}
     >
