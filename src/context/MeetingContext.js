@@ -20,8 +20,12 @@ const MeetingProvider = ({children}) => {
 
   const getMeetings = async () => {
     // const response = await axios.get(`${apiUrl}/meetings`)
-    const response = await apiHelper.get('/meetings')
-    setMeetings(response.data);
+    try {
+      const response = await apiHelper.get('/meetings')
+      setMeetings(response.data);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   const getMeetingById = async (id) => {

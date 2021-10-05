@@ -8,7 +8,6 @@ const GoogleButton = () => {
   const responseGoogle = (resp) => {
     const { email, name} = resp.profileObj;
     googleLogin({name, email});
-    console.log("Email", email, "Name", name);
   }
 
   return (

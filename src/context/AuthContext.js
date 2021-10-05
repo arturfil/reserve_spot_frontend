@@ -50,11 +50,26 @@ const AuthProvider = ({children}) => {
     }
   }
 
+  const signUpUser = async (obj) => {
+    try {
+      const response = await apiHelper.post('/auth/signup', obj);
+      const { data} = response;
+      setUser(data.user);
+      localStorage.setItem('jwtreservespot', JSON.stringify({user_role: data.user.role, token: data.token}));
+      setLoggedIn(true);
+      isAdmin();
+      toast.success("Singed Up Succesfully")
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   const googleLogin = async (obj) => {
     try {
       const response = await apiHelper.post('/auth/googleLogin', obj);
       const {user, token} = response.data;
-      localStorage.setItem('jwtreservespot', JSON.stringify(token));
+      console.log("USER -> ", user)
+      localStorage.setItem('jwtreservespot', JSON.stringify({user_role: user.role, token: token}));
       setLoggedIn(true);
       toast.success('Successfuly Logged In with Google');
       setUser(user);
@@ -81,6 +96,7 @@ const AuthProvider = ({children}) => {
     try {
       const response = await apiHelper.post('/auth/renew');
       const {data} = response;
+      setUser(data.user);
       localStorage.setItem('jwtreservespot', JSON.stringify({user_role: data.user.role, token: data.token}))
     } catch (error) {
       console.log(error);
@@ -99,6 +115,7 @@ const AuthProvider = ({children}) => {
         admin,
         users,
         loggedIn,
+        signUpUser,
         setUser,
         loginUser,
         googleLogin,

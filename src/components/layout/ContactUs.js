@@ -6,9 +6,9 @@ const ContactUs = () => {
         <div className="row">
           <form action="mailto:will@thinkeazy.org" method="get" encType="text/plain">
             <h4>Contact Us</h4>
-            <input for="subject" placeholder="Subject" type="text" className="form-control" />
-            <input for="name" placeholder="name" type="text" className="form-control" />
-            <input id="email" for="email" placeholder="email" type="text" className="form-control" />
+            <input placeholder="Subject" type="text" className="form-control" />
+            <input placeholder="name" type="text" className="form-control" />
+            <input placeholder="email" type="text" className="form-control" />
             <textarea
               placeholder="message"
               type="text"
