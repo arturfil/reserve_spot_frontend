@@ -36,9 +36,10 @@ const MeetingDetailsView = ({ match }) => {
       </table>
 
       <h4 className="mt-3">Attendees: </h4>
-      {meeting.attendees && meeting.attendees.map((a) => (
+      {/* {meeting.attendees && meeting.attendees.map((a) => (
           <h6 key={a.uid}>{a.name}</h6>
-      ))}
+      ))} */}
+      <h4>{meeting.user && meeting.user.name}</h4>
       
       <Link 
         to={`/editMeeting/${id}`}

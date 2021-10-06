@@ -9,14 +9,7 @@ const AuthProvider = ({children}) => {
   const [ loggedIn, setLoggedIn] = useState(false);
   const [admin, setAdmin] = useState(false);
   const [users, setUsers] = useState([]);
-  const [user, setUser] = useState({
-    name: '',
-    email: '',
-    password: '',
-    role: '',
-    google: false,
-    facebook: false,
-  })
+  const [user, setUser] = useState({})
 
   useEffect(() => {
     checkLogged();

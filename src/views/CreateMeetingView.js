@@ -6,14 +6,16 @@ import { AuthContext } from '../context/AuthContext';
 const CreateMeetingView = () => {
   const { topics } = useContext(TopicContext)
   const { createMeeting, setMeetings, meetings } = useContext(MeetingContext);
-  const { users } = useContext(AuthContext)
+  const { user } = useContext(AuthContext)
   const [meeting, setMeeting] = useState({
     topic: '',
     date: '',
     startTime: '',
-    attendees: '',
+    user: user.uid,
     duration: ''
   })
+
+  console.log(meeting);
 
   const handleChange = (event) => {
     setMeeting({
@@ -51,12 +53,12 @@ const CreateMeetingView = () => {
         
         </select>
 
-        <select defaultValue={'none'} onChange={handleChange} name="attendees" className="form-control">
+        {/* <select defaultValue={'none'} onChange={handleChange} name="attendees" className="form-control">
             <option value={'none'} disabled>Select User</option>
             {users.map(user => (
               <option key={user.uid} value={user.uid}>{user.name}</option>
             ))}
-        </select>
+        </select> */}
 
         <input
           name="date"
