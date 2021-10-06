@@ -15,8 +15,6 @@ const CreateMeetingView = () => {
     duration: ''
   })
 
-  console.log(meeting);
-
   const handleChange = (event) => {
     setMeeting({
       ...meeting,
