@@ -36,7 +36,6 @@ const AuthProvider = ({children}) => {
       setUser(data.user);
       localStorage.setItem('jwtreservespot', JSON.stringify({user_role: data.user.role, token: data.token}));
       setLoggedIn(true);
-      isAdmin();
       toast.success("Succesfully Logged In");
     } catch (error) {
       toast.error(`${error}`)
@@ -50,7 +49,6 @@ const AuthProvider = ({children}) => {
       setUser(data.user);
       localStorage.setItem('jwtreservespot', JSON.stringify({user_role: data.user.role, token: data.token}));
       setLoggedIn(true);
-      isAdmin();
       toast.success("Singed Up Succesfully")
     } catch (error) {
       console.log(error);
@@ -81,7 +79,7 @@ const AuthProvider = ({children}) => {
     if (!loggedIn) return;
     const token = JSON.parse(localStorage.getItem('jwtreservespot'));
     const { user_role } = token;
-    return token.user_role === 'ADMIN' ? setAdmin(true) : setAdmin(false);
+    return user_role === 'ADMIN' ? setAdmin(true) : setAdmin(false);
   }
 
   const revalidateToken = async () => {
