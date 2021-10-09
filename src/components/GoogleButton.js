@@ -6,6 +6,7 @@ const GoogleButton = () => {
   const { googleLogin } = useContext(AuthContext)
 
   const responseGoogle = (resp) => {
+    console.log("RESPONSE", resp);
     const { email, name} = resp.profileObj;
     googleLogin({name, email});
   }
