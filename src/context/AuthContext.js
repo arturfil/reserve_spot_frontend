@@ -59,7 +59,6 @@ const AuthProvider = ({children}) => {
     try {
       const response = await apiHelper.post('/auth/googleLogin', obj);
       const {user, token} = response.data;
-      console.log("USER -> ", user)
       localStorage.setItem('jwtreservespot', JSON.stringify({user_role: user.role, token: token}));
       setLoggedIn(true);
       toast.success('Successfuly Logged In with Google');
