@@ -12,8 +12,12 @@ const TopicProvider = ({children}) => {
   }, [])
 
   const getAllTopics = async () => {
-    const response = await apiHelper.get('/topics');
-    setTopics(response.data);
+    try {
+      const response = await apiHelper.get('/topics');
+      setTopics(response.data);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   const createTopic = async (obj) => {

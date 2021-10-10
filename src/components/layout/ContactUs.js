@@ -14,10 +14,10 @@ const ContactUs = () => {
               type="text"
               className="form-control"
             />
-            <button className="btn btn-dark form-control">Send</button>
+            <button style={{color: 'white'}} className="btn btn-dark form-control">Send</button>
           </form>
         </div>
-        <div className="row">
+        <div className="row mt-5">
           <h4>Where To Reach Us</h4>
           <p>
             Email: will@thinkeasy.org

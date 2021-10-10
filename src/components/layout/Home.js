@@ -6,7 +6,7 @@ const Home = () => {
     <div id="home" className="landingPage">
       <div className="container box">
         <div className="row">
-          <div className="col title">
+          <div className="col-lg-6 col-md-12 title">
             <h2>Welcome to Think Easy!</h2>
             <p>
               Explore all the services that we have for you! We have cutting edge technology and 
@@ -17,7 +17,7 @@ const Home = () => {
               Log In
             </Link>
           </div>
-          <div className="col">
+          <div className="col-lg-6 col-md-12">
             <img src={image2} alt="" />
           </div>
         </div>

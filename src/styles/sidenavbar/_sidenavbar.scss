@@ -4,7 +4,7 @@ $navcolor:linear-gradient(180deg, rgb(20, 160, 78), rgb(112, 218, 109));
   display: flex;
   position: fixed;
   top: 0;
-  left: -100;
+  // left: -100;
   transition: 850ms;
   background-image: $navcolor;
   height: 100%;
