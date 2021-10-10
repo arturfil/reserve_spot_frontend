@@ -16,7 +16,7 @@ const HomeView = () => {
       <div className="row">
         {meetings &&
           meetings.map((m, i) => (
-            <div key={i} className="col my-4">
+            <div key={i} className="col-xl-3 col-lg-4 col-md-6 my-4">
               <MeetingCard meeting={m} />
             </div>
           ))}

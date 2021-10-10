@@ -4,7 +4,7 @@ $navcolor:linear-gradient(180deg, rgb(20, 160, 78), rgb(112, 218, 109));
   display: flex;
   position: fixed;
   top: 0;
-  // left: -100;
+  right: 0;
   transition: 850ms;
   background-image: $navcolor;
   height: 100%;
@@ -35,21 +35,24 @@ $navcolor:linear-gradient(180deg, rgb(20, 160, 78), rgb(112, 218, 109));
 }
 
 .listBtn {
-  font-size: 25px;
+  display: flex;
+  justify-content: end;
   color: white;
   background-image: $navcolor;
 
   i {
     cursor: pointer;
-    padding-left: 10px;
+    padding: 0 10px;
+    font-size: 35px;
   }
 }
 
 .burgerIcon {
   padding-top: 10px;
   display: flex;
-  justify-content: end;
+  // right: 0;
+  // justify-content: end;
   color: white;
   cursor: pointer;
-  font-size: 25px;
+  font-size: 35px;
 }
