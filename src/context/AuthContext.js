@@ -38,7 +38,9 @@ const AuthProvider = ({children}) => {
       setLoggedIn(true);
       toast.success("Succesfully Logged In");
     } catch (error) {
+      console.log(error.response)
       toast.error(`${error.response.data.message}`)
+      return error.response.data;
     }
   }
 

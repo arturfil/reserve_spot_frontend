@@ -47,14 +47,6 @@ const EditMeetingView = ({match}) => {
       <form className="editForm">
         <h2>Edit Meeting</h2>
 
-        {/* <label>Attendees</label> */}
-        {/* <select name="attendees" className="form-control">
-          <option value="" disabled>Select Attendees</option>
-          { meeting.attendees && meeting.attendees.map(a => (
-            <option key={a.uid} value={a.uid}>{a.name}</option>
-            ))}
-        </select> */}
-
         <label>Topics</label>
         <select
           defaultValue={meeting.topic?.name}

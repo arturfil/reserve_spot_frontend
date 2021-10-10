@@ -4,7 +4,6 @@ import { AuthContext } from "../context/AuthContext";
 import { MeetingContext } from "../context/MeetingContext";
 
 const HomeView = () => {
-  const { user } = useContext(AuthContext);
   const { meetings } = useContext(MeetingContext);
 
   return (

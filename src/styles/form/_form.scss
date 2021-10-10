@@ -7,12 +7,16 @@
   }
 
   input {
-    margin: 20px 0;
+    margin-top: 20px;
+  }
+
+  button {
+    margin-top: 20px;
   }
 }
 
 .editForm {
-  width: 500px;
+  max-width: 500px;
   margin: 0 auto;
 
   label {
